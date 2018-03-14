@@ -371,7 +371,7 @@ class JsonRpc10:
         """
         try:
             data = self.loads(string)
-        except Exception as err:
+        except ValueError as err:
             raise RPCParseError("No valid JSON. (%s)" % str(err))
         if not isinstance(data, dict):  raise RPCInvalidRPC("No valid RPC-package.")
         if "method" not in data:        raise RPCInvalidRPC("""Invalid Request, "method" is missing.""")
@@ -399,7 +399,7 @@ class JsonRpc10:
         """
         try:
             data = self.loads(string)
-        except Exception as err:
+        except ValueError as err:
             raise RPCParseError("No valid JSON. (%s)" % str(err))
         if not isinstance(data, dict):  raise RPCInvalidRPC("No valid RPC-package.")
         if "id" not in data:            raise RPCInvalidRPC("""Invalid Response, "id" missing.""")
@@ -552,7 +552,7 @@ class JsonRpc20:
         """
         try:
             data = self.loads(string)
-        except Exception as err:
+        except ValueError as err:
             raise RPCParseError("No valid JSON. (%s)" % str(err))
         if not isinstance(data, dict):  raise RPCInvalidRPC("No valid RPC-package.")
         if "jsonrpc" not in data:       raise RPCInvalidRPC("""Invalid Response, "jsonrpc" missing.""")
@@ -588,7 +588,7 @@ class JsonRpc20:
         """
         try:
             data = self.loads(string.decode("utf-8"))
-        except Exception as err:
+        except ValueError as err:
             raise RPCParseError("No valid JSON. (%s)" % str(err))
         if not isinstance(data, dict):  raise RPCInvalidRPC("No valid RPC-package.")
         if "jsonrpc" not in data:       raise RPCInvalidRPC("""Invalid Response, "jsonrpc" missing.""")
