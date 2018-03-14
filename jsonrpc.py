@@ -790,7 +790,7 @@ class TransportSocket(Transport):
     def sendrecv( self, string ):
         """send data + receive data + close"""
         try:
-            self.send( string  )
+            self.send( string )
             return self.recv()
         finally:
             self.close()
